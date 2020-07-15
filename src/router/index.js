@@ -8,11 +8,16 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: '/',
+		name: 'home',
+		redirect: { name: 'list' },
+	},
+	{
+		path: '/assets',
 		name: 'list',
 		component: ListView,
 	},
 	{
-		path: '/detail',
+		path: '/assets/:tokenId',
 		name: 'detail',
 		component: DetailView,
 	},
