@@ -1,35 +1,47 @@
 <template>
-	<div>
-		<h1>List of Assets</h1>
+	<div class="page">
+		<h1 class="header">
+			List of Assets
+		</h1>
 
-		<template v-if="assets.length > 0">
-			<ul>
+		<div
+			v-if="assets.length > 0"
+			class="content"
+		>
+			<ul class="list">
 				<li
 					v-for="asset in assets"
 					:key="asset.tokenId"
+					class="item"
 				>
 					<router-link :to="{ name: 'detail', params: { tokenId: asset.tokenId } }">
 						<AssetPreview :asset="asset" />
 					</router-link>
 				</li>
 			</ul>
-			<infinite-loading @infinite="handleInfiniteScroll"></infinite-loading>
-		</template>
 
-		<div v-else>Loading ...</div>
+			<LoadingInfinite @infinite="handleInfiniteScroll" />
+		</div>
+
+		<LoadingSpinner
+			v-else
+			class="loading"
+		/>
 	</div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import AssetPreview from '@/components/AssetPreview.vue'
-import InfiniteLoading from 'vue-infinite-loading'
+import LoadingSpinner from '@/components/Loading/LoadingSpinner.vue'
+import LoadingInfinite from '@/components/Loading/LoadingInfinite.vue'
+import AssetPreview from '@/components/Asset/AssetPreview.vue'
 
 export default {
 	name: 'ListView',
 	components: {
+		LoadingSpinner,
+		LoadingInfinite,
 		AssetPreview,
-		InfiniteLoading,
 	},
 	computed: {
 		...mapState(['assets']),
@@ -43,6 +55,13 @@ export default {
 	methods: {
 		...mapActions(['fetchNextAssets']),
 
+		/**
+		 * Handle infinite scroll to fetch next assets
+		 * Doc: https://peachscript.github.io/vue-infinite-loading/api/#infinite
+		 *
+		 * @param {Object} $state - Special event argument of vue-infinite-loading component
+		 * @returns {Promise}
+		 */
 		async handleInfiniteScroll($state) {
 			const nextAssets = await this.fetchNextAssets()
 
@@ -58,5 +77,30 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.loading {
+	margin: 2rem auto;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.item {
+	margin-bottom: 1rem;
+}
+
+@media screen and (min-width: $screen-medium) {
+	.list {
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	.item {
+		flex: 0 0 45%;
+		margin-bottom: 2rem;
+	}
+}
 </style>

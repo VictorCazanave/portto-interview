@@ -1,0 +1,26 @@
+/* Common layout */
+
+// Page wrapper
+.page {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+// Fixed header
+.header {
+	flex: 0 0 auto;
+	padding: 1rem;
+	background-color: $color-black;
+	color: $color-white;
+	font-size: 1.4rem;
+}
+
+// Scrollable content
+.content {
+	flex: 1 1 auto;
+	max-width: 75rem; // To avoid too large images
+	margin: 0 auto;
+	padding: 1rem;
+	overflow: auto;
+}
