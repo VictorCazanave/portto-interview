@@ -1,9 +1,20 @@
 import 'whatwg-fetch'
 
-const ETHEREUM_ACCOUNT = '0x960DE9907A2e2f5363646d48D7FB675Cd2892e91'
+const DEFAULT_ETHEREUM_ACCOUNT = '0x960DE9907A2e2f5363646d48D7FB675Cd2892e91'
 const PAGE_SIZE = 20
 
+let ethereumAccount
+
 export default {
+	/**
+	 * Set ethereum account to use for requests
+	 *
+	 * @param {string} account - Ethereum account
+	 */
+	setEthereumAccount(account) {
+		ethereumAccount = account || DEFAULT_ETHEREUM_ACCOUNT
+	},
+
 	/**
 	 * Get list of assets of provided page
 	 *
@@ -11,7 +22,7 @@ export default {
 	 * @returns {Promise<Object[]>} List of assets
 	 */
 	async getAssets(page) {
-		const response = await fetch(`https://api.opensea.io/api/v1/assets?owner=${ETHEREUM_ACCOUNT}&offset=${page * PAGE_SIZE}&limit=${PAGE_SIZE}`)
+		const response = await fetch(`https://api.opensea.io/api/v1/assets?owner=${ethereumAccount}&offset=${page * PAGE_SIZE}&limit=${PAGE_SIZE}`)
 		const data = await response.json()
 
 		// Format response data to keep a consistent API in components:
