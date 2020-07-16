@@ -1,14 +1,14 @@
 <template>
 	<div class="page">
-		<h1 class="header">
+		<h1 class="page-header">
 			List of Assets
 		</h1>
 
-		<div
+		<main
 			v-if="assets.length > 0"
-			class="content"
+			class="page-body"
 		>
-			<ul class="list">
+			<ul class="page-content list">
 				<li
 					v-for="asset in assets"
 					:key="asset.tokenId"
@@ -21,7 +21,7 @@
 			</ul>
 
 			<LoadingInfinite @infinite="handleInfiniteScroll" />
-		</div>
+		</main>
 
 		<LoadingSpinner
 			v-else

@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<header class="header">
+		<header class="page-header header">
 			<router-link
 				:to="{ name: 'list' }"
 				class="previous"
@@ -12,24 +12,28 @@
 			</h1>
 		</header>
 
-		<div class="content">
-			<img
-				:src="asset.imageUrl"
-				:alt="asset.name"
-				class="image"
-			>
+		<main class="page-body">
+			<div class="page-content">
+				<img
+					:src="asset.imageUrl"
+					:alt="asset.name"
+					class="image"
+				>
 
-			<span class="name">
-				{{ asset.name }}
-			</span>
+				<span class="name">
+					{{ asset.name }}
+				</span>
 
-			<p class="description">
-				{{ asset.description }}
-			</p>
-		</div>
+				<p class="description">
+					{{ asset.description }}
+				</p>
+			</div>
+		</main>
 
 		<a
 			:href="asset.permalink"
+			target="_blank"
+			rel=”noopener”
 			class="permalink"
 		>
 			Permalink
