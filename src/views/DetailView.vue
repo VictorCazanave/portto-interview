@@ -3,6 +3,7 @@
 		<header class="page-header header">
 			<router-link
 				:to="{ name: 'list' }"
+				title="Go to assets list"
 				class="previous"
 			>
 				&lt;
@@ -50,6 +51,7 @@ export default {
 		...mapState(['assets']),
 
 		asset() {
+			// TODO: Handle error when unknown asset
 			return this.assets.find((asset) => asset.tokenId === this.$route.params.tokenId)
 		},
 	},

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetPreview components renders asset data properly 1`] = `
+<div
+  class="preview"
+>
+  <img
+    alt="name"
+    class="image"
+    src="imageUrl"
+  />
+   
+  <span
+    class="name"
+  >
+    
+		name
+	
+  </span>
+</div>
+`;

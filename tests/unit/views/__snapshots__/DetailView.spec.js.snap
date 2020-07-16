@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailView renders asset data properly 1`] = `
+<div
+  class="page"
+>
+  <header
+    class="page-header header"
+  >
+    <router-link-stub
+      class="previous"
+      title="Go to assets list"
+      to="[object Object]"
+    >
+      
+			&lt;
+		
+    </router-link-stub>
+     
+    <h1>
+      
+			collectionName1
+		
+    </h1>
+  </header>
+   
+  <main
+    class="page-body"
+  >
+    <div
+      class="page-content"
+    >
+      <img
+        alt="name1"
+        class="image"
+        src="imageUrl1"
+      />
+       
+      <span
+        class="name"
+      >
+        
+				name1
+			
+      </span>
+       
+      <p
+        class="description"
+      >
+        
+				description1
+			
+      </p>
+    </div>
+  </main>
+   
+  <a
+    class="permalink"
+    href="permalink1"
+    rel="”noopener”"
+    target="_blank"
+  >
+    
+		Permalink
+	
+  </a>
+</div>
+`;
