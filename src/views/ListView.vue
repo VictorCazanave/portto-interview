@@ -4,8 +4,13 @@
 			List of Assets
 		</h1>
 
+		<LoadingSpinner
+			v-if="loading"
+			class="loading"
+		/>
+
 		<main
-			v-if="assets.length > 0"
+			v-else
 			class="page-body"
 		>
 			<ul class="page-content list">
@@ -22,11 +27,6 @@
 
 			<LoadingInfinite @infinite="handleInfiniteScroll" />
 		</main>
-
-		<LoadingSpinner
-			v-else
-			class="loading"
-		/>
 	</div>
 </template>
 
@@ -43,17 +43,32 @@ export default {
 		LoadingInfinite,
 		AssetPreview,
 	},
+	data() {
+		return {
+			loading: true,
+		}
+	},
 	computed: {
 		...mapState(['assets']),
 	},
 	created() {
-		// Fetch assets only on first load
-		if (this.assets.length === 0) {
-			this.fetchNextAssets()
-		}
+		this.fetchFirstAssets()
 	},
 	methods: {
 		...mapActions(['fetchNextAssets']),
+
+		/**
+		 * Fetch first assets only on first load
+		 *
+		 * @returns {Promise}
+		 */
+		async fetchFirstAssets() {
+			if (this.assets.length === 0) {
+				await this.fetchNextAssets()
+			}
+
+			this.loading = false
+		},
 
 		/**
 		 * Handle infinite scroll to fetch next assets

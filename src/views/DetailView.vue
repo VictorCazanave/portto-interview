@@ -44,7 +44,6 @@
 <script>
 import { mapState } from 'vuex'
 
-// TODO: Handle fallback (request or localStorage) when reload
 export default {
 	name: 'DetailView',
 	computed: {

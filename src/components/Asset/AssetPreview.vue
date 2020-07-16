@@ -13,6 +13,11 @@
 </template>
 
 <script>
+/**
+ * Preview of an asset to:
+ * - avoid clutter in list view
+ * - make it eventually re-usable in other views/components
+ */
 export default {
 	name: 'AssetPreview',
 	props: {
