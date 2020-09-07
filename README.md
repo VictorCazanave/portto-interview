@@ -2,7 +2,7 @@
 
 _Preliminary interview project for [Portto](https://portto.io/)_
 
-A live demo is available [here](https://victorcazanave.github.io/portto-interview/).
+A live demo is available [here](https://victorcazanave.github.io/portto-interview/) (unpublished).
 
 ## 🎯 Features
 
